@@ -1,0 +1,220 @@
+/* Main.css */
+.header {
+    background: linear-gradient(180deg, #22107E 0%, rgba(34, 16, 126, 0.60) 269.58%);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    height: auto; 
+  }
+
+  .profile {
+    width: 80px;
+    height: auto; 
+  }
+
+  .nav-icon {
+    width: 80px; 
+    height: auto;
+    margin-right: 30px;
+    color: orange ;
+  }
+
+  .mr-2
+  {
+    margin-right: 20px;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+  }
+
+/* สไตล์ขอบของปฏิทิน */
+.rbc-calendar {
+    border: 1px solid #ddd;
+    background-color: transparent;
+  }
+  
+  /* สไตล์พื้นหลังของปฏิทิน */
+  .rbc-calendar {
+    background-color: white;
+  }
+  
+  /* สไตล์พื้นหลังของกิจกรรม */
+  .rbc-event {
+    background-color: #007bff;
+  }
+  
+  /* สไตล์ขอบของกิจกรรม */
+  .rbc-event {
+    border: 1px solid #0056b3;
+  }
+  
+  /* สไตล์ข้อความของกิจกรรม */
+  .rbc-event-label {
+    color: #fff;
+  }
+
+  .add-event-button {
+    width: 50px; 
+    height: 50px;
+    border: 20px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 2;
+  }
+
+  .modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+
+  .modal-content {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+  }
+  
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  /* Style for the form elements */
+  label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  input[type="text"],
+  select,
+  input[type="date"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  select {
+    appearance: none;
+  }
+  
+  .modal-buttons {
+    text-align: right;
+  }
+  
+  .modal-buttons button {
+    margin-left: 10px;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .modal-buttons button:hover {
+    background-color: #0056b3;
+  }
+
+  .expandable-area {
+    flex-grow: 1; 
+  }
+
+  .student-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 16px;
+  }
+  
+  .student-table th,
+  .student-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  /* สไตล์สีพื้นหลังสำหรับหัวข้อคอลัมน์ */
+  .student-table th {
+    background-color: #f2f2f2;
+  }
+  
+  /* สไตล์สีเมื่อเมาส์ชี้ไปยังแถว */
+  .student-table tr:hover {
+    background-color: #e0e0e0;
+  }
+  
+  /* สไตล์สีเมื่อความเสี่ยงเป็น "Low" */
+  .student-table tr.low-risk {
+    background-color: #aaffaa;
+  }
+  
+  /* สไตล์สีเมื่อความเสี่ยงเป็น "Medium" */
+  .student-table tr.medium-risk {
+    background-color: #ffffaa;
+  }
+  
+  /* สไตล์สีเมื่อความเสี่ยงเป็น "High" */
+  .student-table tr.high-risk {
+    background-color: #ffaaaa;
+  }
+  
+
+ 
+  
+  /* ปรับแต่งรูปภาพให้เหมาะสม */
+  .profilea {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  
+  /* ระยะห่างระหว่างข้อความ */
+  p {
+    margin: 40px 20px;
+  }
+  
+  /* ระยะห่างระหว่างรูปภาพขยับกัน */
+  .risk-level img {
+    margin: 5px 70px;
+  }
+  
+
+  
