@@ -1,1 +1,1 @@
-react react-router-dom react-calendar react-dom date-fns
+npm i react react-router-dom react-calendar react-dom date-fns react-scripts react-big-calendar styled-components moment jspdf jspdf-autotable web-vitals
