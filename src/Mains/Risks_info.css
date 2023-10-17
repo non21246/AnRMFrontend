@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #ffffff; /* สีพื้นหลังของหน้าเว็บ */
+  }
+  
+  /* เพิ่มสไตล์ให้กับส่วนของเฮดเดอร์ */
+  .header {
+    background-color: #22107E; /* สีฟ้า */
+    color: white;
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* เพิ่มสไตล์ให้กับโลโก้ */
+  .ll {
+    width: 50px; /* ปรับขนาดความกว้างของโลโก้ตามที่คุณต้องการ */
+    height: auto; /* ปรับขนาดความสูงของโลโก้ให้อัตโนมัติ */
+  }
+  
+  .profile {
+    width: 80px; /* ปรับขนาดความกว้างของโลโก้ตามที่คุณต้องการ */
+    height: auto; /* ปรับขนาดความสูงของโลโก้ให้อัตโนมัติ */
+  }
+  
+  /* src/App.css */
+  /* กำหนดเนื้อหาให้อยู่กึ่งกลางแนวนอน */
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+  }
+  
+  /* กำหนดรูปภาพให้อยู่ติดกับข้อความ */
+  .student-image {
+    flex: 1; /* ให้รูปภาพขยายเต็มขนาดแนวนอน */
+    text-align: right; /* จัดตรงกลางข้อความ */
+  }
+  
+  /* กำหนดรูปภาพให้อยู่ติดกับข้อความ */
+  .student-image img {
+    width: 280px; /* ปรับขนาดรูปภาพตามที่คุณต้องการ */
+    height: auto; /* ปรับขนาดความสูงให้อัตโนมัติ (รักษาสัดส่วน) */
+    margin-right: 200px; /* เพิ่มระยะห่างด้านขวาของรูปภาพ */
+  }
+  
+  /* กำหนดขนาดของข้อความให้ใหญ่พอดี */
+  .student-info p {
+    font-size: 20px; /* ปรับขนาดข้อความตามที่คุณต้องการ */
+    margin: 100px; /* เพิ่มระยะห่างรอบข้อความ */
+  }
+  
+  /* ปรับเฮดเดอร์ และเนื้อหาในหน้าจอที่มีความกว้างน้อยกว่า 600px */
+  @media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    text-align: center;
+    padding: 5px;
+  }
+  .student-image {
+    text-align: center;
+  }
+  .student-image img {
+    width: 80px;
+    margin: 5px;
+  }
+  .student-info p {
+    font-size: 16px;
+    margin: 3px;
+  }
+  }

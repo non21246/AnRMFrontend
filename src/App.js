@@ -11,7 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainIndex />} />
           <Route path="/risk" element={<Risk />} />
-          <Route path="/riskinfo" element={<RiskInfo />} />
+          <Route path="/riskinfo/:studentID" element={<RiskInfo />} /> 
         </Routes>
       </Router>
     </div>

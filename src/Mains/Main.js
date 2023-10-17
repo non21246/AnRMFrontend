@@ -1,31 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import moment from 'moment';
 import styled from 'styled-components';
 import './Main.css';
 import {NavLink} from "react-router-dom";
+// import axios from 'axios';
 
 const localizer = momentLocalizer(moment);
-
-const initialEvents = [
-    {
-        title: 'แข่ง Capture the flag of security',
-        type:'กิจกรรมภายนอก',
-        start: new Date(2023, 9, 1, 9, 0),
-        end: new Date(2023, 9, 1, 16, 0), 
-        organizers:'Huawei',
-        description: 'แข่งที่ G-Tower'
-    },
-    {
-        title: 'งานสัมมนา เรื่อง IT',
-        type:'งานสัมมนา',
-        start: new Date(2023, 9, 5, 14, 0),
-        end: new Date(2023, 9, 5, 15, 30),
-        organizers:'อาจารย์สุรศักดิ์ เรืองแสง',
-        description: 'งานสัมมนา เรื่อง IT จัดที่ห้อง 2102'
-    },
-];
 
 const CalendarContainer = styled.div`
   display: flex;
@@ -45,16 +27,29 @@ const AddEventButton = styled.button`
   z-index: 2;
 `;
 
-function App() {
-    const [events, setEvents] = useState(initialEvents);
+function Main() {
+    const [events, setEvents] = useState([]);
     const [showAddEvent, setShowAddEvent] = useState(false);
-    const [newEvent, setNewEvent] = useState({ title: '', type:'', start: new Date(), end: new Date(), organizers:'', description: ''});
+    const [newEvent, setNewEvent] = useState({ title: '', type:'1',place: '1', start: new Date(), end: new Date(), organizer:'', description: ''});
     const [selectedEvent, setSelectedEvent] = useState(null);
     const [showEventDetails, setShowEventDetails] = useState(false);
 
+    useEffect(() => {
+        getAllActivity();
+    }, []);
+
+    const getAllActivity = () => {
+        fetch('http://localhost:8080/act')
+        .then(response => response.json())
+        .then(data => setEvents(data))
+        .catch((error) => {
+            console.error(error);
+        });
+    };
+
     const closeAddEvent = () => {
         setShowAddEvent(false);
-    };
+    }
 
     const handleEventClick = (event) => {
         setSelectedEvent(event);
@@ -66,30 +61,50 @@ function App() {
     };
 
     const handleAddEvent = () => {
-        // ตรวจสอบว่าทุกช่องมีค่าหรือไม่
         if (
             newEvent.title === '' ||
             newEvent.type === '' ||
-            newEvent.organizers === '' ||
+            newEvent.organizer === '' ||
             newEvent.description === ''
         ) {
             alert('โปรดกรอกข้อมูลให้ครบถ้วน');
+        } else if(newEvent.end <= newEvent.start){
+            alert('โปรดกรอกเวลาให้ถูกต้อง');
         } else {
-            // ถ้าทุกช่องถูกกรอกครบถ้วนให้เพิ่มกิจกรรม
-            setEvents([...events, newEvent]);
-            setNewEvent({
-                title: '',
-                type: '',
-                start: new Date(),
-                end: new Date(),
-                organizers: '',
-                description: '',
+            fetch('http://localhost:8080/act', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newEvent),
+            })
+            .then((response) => {
+                if (response.ok) {
+                    alert('บันทึกสำเร็จ');
+                    setEvents([...events, newEvent]);
+                    setNewEvent({
+                        title: '',
+                        type: '',
+                        place: '',
+                        start: new Date(),
+                        end: new Date(),
+                        organizer: '',
+                        description: '',
+                    });
+                    setShowAddEvent(false);
+                } else {
+                    alert('เกิดข้อผิดพลาดในการบันทึก');
+                }
+            })
+            .catch((error) => {
+                alert(error);
             });
-            setShowAddEvent(false);
         }
-    };
-    
-      
+    }; 
+
+    const handlejoinEvent = () => {
+            alert('เข้าร่วมกิจกรรมสำเร็จ');
+    }
 
     return (
         <div>
@@ -100,7 +115,7 @@ function App() {
                 <NavLink to='/risk' >
                     <img src="icon_one.png" alt="Risk" className="nav-icon" />
                 </NavLink>
-                <img src="profile.png" alt="โปรไฟล์" className="profile" />
+                <img src="meme.gif" alt="โปรไฟล์" className="profile" />
             </div>
         <CalendarContainer>
             <StyledCalendar
@@ -125,14 +140,19 @@ function App() {
                         <select id="eventType" value={newEvent.type} onChange={(e) => setNewEvent({ ...newEvent, type: e.target.value })}>
                             <option value="1">กิจกรรมมหาลัย</option>
                             <option value="2">งานสัมมนา</option>
-                            <option value="3">กิจกรรมภายนอก</option>
+                            <option value="3">กิจกรรมจิตอาสา</option>
+                        </select>
+                        <label htmlFor="eventType">ประเภทสถานที่:</label>
+                        <select id="eventType" value={newEvent.place} onChange={(e) => setNewEvent({ ...newEvent, place: e.target.value })}>
+                            <option value="1">ภายในมหาวิทยาลัย</option>
+                            <option value="2">ภายนอกมหาวิทยาลัย</option>
                         </select>
                         <label htmlFor="startDate">วันที่เริ่ม:</label>
                         <input type="datetime-local" id="startDate" value={moment(newEvent.start).format('YYYY-MM-DDTHH:mm')} onChange={(e) => setNewEvent({ ...newEvent, start: moment(e.target.value).toDate() })} />
                         <label htmlFor="endDate">วันที่สิ้นสุด:</label>
                         <input type="datetime-local" id="endDate" value={moment(newEvent.end).format('YYYY-MM-DDTHH:mm')} onChange={(e) => setNewEvent({ ...newEvent, end: moment(e.target.value).toDate() })} />
                         <label htmlFor="namemaster">จัดโดย:</label>
-                        <textarea id="namemaster" value={newEvent.organizers} onChange={(e) => setNewEvent({ ...newEvent, organizers: e.target.value })} />
+                        <textarea id="namemaster" value={newEvent.organizer} onChange={(e) => setNewEvent({ ...newEvent, organizer: e.target.value })} />
                         <label htmlFor="description">รายละเอียด:</label>
                         <textarea id="description" value={newEvent.description} onChange={(e) => setNewEvent({ ...newEvent, description: e.target.value })} />
                         <div className="modal-buttons">
@@ -154,8 +174,11 @@ function App() {
                             <label htmlFor="eventType">ประเภท: {selectedEvent.type === '1' ? 'กิจกรรมมหาลัย' : selectedEvent.type === '2' ? 'งานสัมมนา' : 'กิจกรรมภายนอก'}</label>
                             <label htmlFor="startDate">วันที่เริ่ม: {moment(selectedEvent.start).format('YYYY-MM-DD HH:mm')}</label>
                             <label htmlFor="endDate">วันที่สิ้นสุด: {moment(selectedEvent.end).format('YYYY-MM-DD HH:mm')}</label>
-                            <label id="namemaster">จัดโดย: {selectedEvent.organizers}</label>
+                            <label id="namemaster">จัดโดย: {selectedEvent.organizer}</label>
                             <label id="description">รายละเอียด: {selectedEvent.description}</label>
+                            <div className="modal-buttons">
+                                <button onClick={handlejoinEvent}>เข้าร่วมกิจกรรม</button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -165,4 +188,4 @@ function App() {
     );
 }
 
-export default App;
+export default Main;
