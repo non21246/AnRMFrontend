@@ -78,13 +78,13 @@ function Risk() {
     <div className="App">
       <div className="header">
         <NavLink to="/" className='ml-2'>
-          <img src="ringht.arrow.png" alt="โลโก้" className="profile" />
+          <img src="ringht.arrow.png" alt="โลโก้" className="nav-icon" />
         </NavLink>
         <NavLink to="/" className='nav-links'>
           <img src="logo.png" alt="โลโก้" className="logo" />
         </NavLink>
         <img src="add_notes.png" alt="โลโก้" className="nav-icon" onClick={handleExport}/>
-        <img src="meme.gif" alt="โลโก้" className="profile" />
+        <img src="profile.png" alt="โลโก้" className="nav-icon" />
       </div>
       <div className="table-container">
         <table className="student-table">

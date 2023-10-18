@@ -1,0 +1,56 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f2f2f2;
+  }
+  
+  .login-form {
+    background-color: #fff;
+    padding: 40px; /* ปรับขนาด padding เพิ่มขึ้น */
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 400px; /* ปรับความกว้างของ Form */
+    text-align: center;
+  }
+  
+  h2 {
+    margin: 0;
+    color: #333;
+  }
+  
+  .form-group {
+    margin: 10px 0;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-top: 4px;
+  }
+  
+  button {
+    width: 100%;
+    background-color: #007bff;
+    color: #fff;
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  

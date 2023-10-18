@@ -115,7 +115,7 @@ function Main() {
                 <NavLink to='/risk' >
                     <img src="icon_one.png" alt="Risk" className="nav-icon" />
                 </NavLink>
-                <img src="meme.gif" alt="โปรไฟล์" className="profile" />
+                <img src="profile.png" alt="โปรไฟล์" className="nav-icon" />
             </div>
         <CalendarContainer>
             <StyledCalendar
