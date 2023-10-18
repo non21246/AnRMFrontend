@@ -49,7 +49,7 @@ function Risk() {
       Lastname: student.lastname,
       Major: student.major,
       RiskLevel: student.riskLevel,
-    }));
+    }))
 
     const csv = Papa.unparse(csvData);
     const blob = new Blob([csv], { type: 'text/csv' });
@@ -64,10 +64,10 @@ function Risk() {
   };
 
   const handleExport = () => {
-    const exportFormat = window.prompt('Select export format (PDF or CSV):');
-    if (exportFormat === 'PDF' || exportFormat === 'pdf') {
+    const exportFormat = window.prompt('Select export format (PDF or CSV):').toLowerCase();
+    if (exportFormat === 'pdf') {
       generatePDF();
-    } else if (exportFormat === 'CSV' || exportFormat === 'csv') {
+    } else if (exportFormat === 'csv') {
       generateCSV();
     } else {
       alert('Invalid export format. Please enter "PDF" or "CSV".');

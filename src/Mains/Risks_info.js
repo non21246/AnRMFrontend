@@ -32,7 +32,6 @@ function RiskInfo(props) {
         <NavLink to="/risk" className='ml-2'>
           <img src="ringht.arrow.png" alt="โลโก้" className="profile" />
         </NavLink>
-
         <NavLink to="/" className='nav-links'>
           <img src="logo.png" alt="โลโก้" className="logo" />
         </NavLink>
